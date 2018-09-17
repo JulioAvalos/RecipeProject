@@ -1,5 +1,7 @@
 package com.recipe.project.springframework.services;
 
+import com.recipe.project.springframework.converters.RecipeCommandToRecipe;
+import com.recipe.project.springframework.converters.RecipeToRecipeCommand;
 import com.recipe.project.springframework.domain.Recipe;
 import com.recipe.project.springframework.repositories.RecipeRepository;
 import org.junit.Before;
@@ -21,10 +23,16 @@ public class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
 
@@ -44,7 +52,7 @@ public class RecipeServiceImplTest {
     }
 
     @Test
-    public void findByIdTest() throws Exception{
+    public void findByIdTest() throws Exception {
         Recipe recipe = new Recipe();
         recipe.setId(1L);
 
