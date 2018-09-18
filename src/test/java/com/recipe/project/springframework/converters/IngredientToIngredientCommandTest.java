@@ -23,6 +23,7 @@ public class IngredientToIngredientCommandTest {
 
     @Before
     public void setUp() throws Exception {
+        converter = new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand());
     }
 
     @Test
@@ -47,6 +48,8 @@ public class IngredientToIngredientCommandTest {
 
         UnitOfMeasure uom = new UnitOfMeasure();
         uom.setId(UOM_ID);
+
+        ingredient.setUom(uom);
 
         //when
         IngredientCommand ingredientCommand = converter.convert(ingredient);

@@ -16,6 +16,7 @@ public class NotesToNotesCommandTest {
 
     @Before
     public void setUp() throws Exception {
+        converter = new NotesToNotesCommand();
     }
 
     @Test
