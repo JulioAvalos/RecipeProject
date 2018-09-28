@@ -21,7 +21,15 @@
         <div class="col-md-6 offset-md-3">
             <div class="card">
                 <div class="card-header p-3 mb-2 bg-primary text-white">
-                    <h1 class="panel-title">Ingredients</h1>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h1 class="panel-title">Ingredients</h1>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-info" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/new'}"
+                               role="button"><i class="fas fa-plus"></i> New</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive" th:if="${not #lists.isEmpty(recipe.ingredients)}">
@@ -47,7 +55,7 @@
                             </tr>
                             <tr th:each="ingredient : ${recipe.ingredients}">
                                 <td th:text="${ingredient.id}">334</td>
-                                <td th:text="${ingredient.amount} + ' ' + ${ingredient.uom.getDescription()} +' - ' + ${ingredient.description} + '/show'">
+                                <td th:text="${ingredient.amount} + ' ' + ${ingredient.uom.getDescription()} +' - ' + ${ingredient.description}">
                                     Tasty Goodnees 3
                                 </td>
                                 <td><a href="#"
